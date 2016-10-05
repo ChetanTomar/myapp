@@ -6,6 +6,13 @@
     bin/rails generate frontend angular2
  ```
 
+* Now install Gems
+ 
+ ```ruby
+  bundle install
+ ```
+ 
+
 * Add helper method to app/helpers/application_helper.rb
   ```ruby
     def webpack_script_for(bundle)
