@@ -14,7 +14,7 @@ class FrontendGenerator < Rails::Generators::NamedBase
 
   def add_required_gems_in_gemfile
   	insert_into_file "Gemfile", :after => "source 'https://rubygems.org'\n" do
-		"\ngem 'bootstrap-sass', '~> 3.3.6'\ngem 'rabl'"
+		"\ngem 'bootstrap-sass', '~> 3.3.6'\ngem 'rabl'\ngem 'font-awesome-rails'"
   	end	
   end  
 
