@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Create anguar2 setup structure using this command 
 
-Things you may want to cover:
+ ```ruby
+    bin/rails generate frontend angular2
+ ```
 
-* Ruby version
+* Add helper method to app/helpers/application_helper.rb
+  ```ruby
+    def webpack_script_for(bundle)
+	    path = Rails.root.join("angular2-frontend", "webpack-assets.json")
+	    file = File.read(path)
+	    json = JSON.parse(file)
+	    content_tag(:script, "", {src: json[bundle]["js"]})
+    end
+  ```
 
-* System dependencies
+* Call this helper method from the layout where you want to add anguar2 frontend. In our case we added at **app/views/layouts/application.html.erb**
+  ```erb
+    <app>Loading...</app>
+    <%= webpack_script_for("common") %>
+    <%= webpack_script_for("vendor") %>
+    <%= webpack_script_for("app") %>
+  ```
 
-* Configuration
+* Set a root path with home controller
 
-* Database creation
+  ```ruby
+    rails g controller home index
+  ```  
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ 	config/routes.rb
+   ```ruby
+     root: 'home#index'
+   ```
