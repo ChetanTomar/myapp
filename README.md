@@ -39,5 +39,5 @@
 
  	config/routes.rb
    ```ruby
-     root: 'home#index'
+     root 'home#index'
    ```
